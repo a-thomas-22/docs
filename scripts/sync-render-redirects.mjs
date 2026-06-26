@@ -28,16 +28,13 @@ const renderPath = path.join(root, "render.yaml");
 const BEGIN = "# >>> BEGIN GENERATED REDIRECTS";
 const END = "# <<< END GENERATED REDIRECTS";
 
-// Route-cap bisection dial. Render's Blueprint sync fails on the "Update web
-// service routes" step above some per-service route count. MAX caps how many
-// redirects from redirects.config.js get written into the generated block;
-// raise it across syncs until one fails to find the ceiling. Set to null to
-// emit all (the production setting). Committed so CI / re-runs reproduce the
-// same file. (Total routes = this many + the fixed hand-maintained tail.)
-const MAX = 137;
-// Take the LAST MAX redirects instead of the first — used to tell a pure count
-// cap apart from a single bad rule (same total, different rule subset).
-const FROM_END = true;
+// Bisection selector. The Blueprint sync fails on the "Update web service
+// routes" step for the full set; we isolate the offending rule by emitting only
+// chosen subsets of redirects.config.js. SEGMENTS is an array of [start, end)
+// index ranges; the generated block is their concatenation (order preserved).
+// Set to null to emit all (the production setting). Committed so CI / re-runs
+// reproduce the same file.
+const SEGMENTS = [[137, 202]];
 
 const yaml = await readFile(renderPath, "utf8");
 const lines = yaml.split("\n");
@@ -62,11 +59,9 @@ if (beginIdx === -1 || endIdx === -1 || endIdx < beginIdx) {
 // source: ... }`) — Prettier would reformat it and fight the sync check.
 const indent = lines[beginIdx].match(/^\s*/)[0];
 const selected =
-  MAX == null
+  SEGMENTS == null
     ? redirects
-    : FROM_END
-      ? redirects.slice(-MAX)
-      : redirects.slice(0, MAX);
+    : SEGMENTS.flatMap(([a, b]) => redirects.slice(a, b));
 const block = selected.flatMap(({ from, to }) => [
   `${indent}- type: redirect`,
   `${indent}  source: ${JSON.stringify(from)}`,
@@ -81,5 +76,5 @@ const next = [
 
 await writeFile(renderPath, next.join("\n"));
 console.log(
-  `sync-render-redirects: wrote ${selected.length}/${redirects.length} redirects into render.yaml (MAX=${MAX}).`,
+  `sync-render-redirects: wrote ${selected.length}/${redirects.length} redirects into render.yaml (SEGMENTS=${JSON.stringify(SEGMENTS)}).`,
 );

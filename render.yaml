@@ -27,12 +27,6 @@ services:
       - type: redirect
         source: "/resources/infrastructure/api"
         destination: "/api-and-toolings/infrastructure/api"
-      - type: redirect
-        source: "/resources/infrastructure/choose-an-infra-provider"
-        destination: "/api-and-toolings/infrastructure/choose-an-infra-provider"
-      - type: redirect
-        source: "/resources/infrastructure/zerodev"
-        destination: "/api-and-toolings/infrastructure/zerodev"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

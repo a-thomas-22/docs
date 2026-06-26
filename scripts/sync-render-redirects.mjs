@@ -34,7 +34,7 @@ const END = "# <<< END GENERATED REDIRECTS";
 // index ranges; the generated block is their concatenation (order preserved).
 // Set to null to emit all (the production setting). Committed so CI / re-runs
 // reproduce the same file.
-const SEGMENTS = [[186, 187]];
+const SEGMENTS = [[187, 188]];
 
 const yaml = await readFile(renderPath, "utf8");
 const lines = yaml.split("\n");

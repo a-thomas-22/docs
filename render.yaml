@@ -22,8 +22,8 @@ services:
     routes:
       # >>> BEGIN GENERATED REDIRECTS — produced by `npm run sync-redirects`; do not edit by hand
       - type: redirect
-        source: "/resources/infrastructure/rpcs"
-        destination: "/api-and-toolings/infrastructure/rpcs"
+        source: "/resources/infrastructure/api"
+        destination: "/api-and-toolings/infrastructure/api"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

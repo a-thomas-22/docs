@@ -34,7 +34,7 @@ const END = "# <<< END GENERATED REDIRECTS";
 // raise it across syncs until one fails to find the ceiling. Set to null to
 // emit all (the production setting). Committed so CI / re-runs reproduce the
 // same file. (Total routes = this many + the fixed hand-maintained tail.)
-const MAX = 87;
+const MAX = 137;
 
 const yaml = await readFile(renderPath, "utf8");
 const lines = yaml.split("\n");

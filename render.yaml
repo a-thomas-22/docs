@@ -22,53 +22,29 @@ services:
     routes:
       # >>> BEGIN GENERATED REDIRECTS — produced by `npm run sync-redirects`; do not edit by hand
       - type: redirect
-        source: "/smart-accounts/account-recovery/flow-intro"
-        destination: "/advanced/account-recovery/flow-intro"
+        source: "/resources/infrastructure/rpcs"
+        destination: "/api-and-toolings/infrastructure/rpcs"
       - type: redirect
-        source: "/smart-accounts/account-recovery/flow-setup"
-        destination: "/advanced/account-recovery/flow-setup"
+        source: "/resources/infrastructure/api"
+        destination: "/api-and-toolings/infrastructure/api"
       - type: redirect
-        source: "/smart-accounts/account-recovery/portal"
-        destination: "/advanced/account-recovery/portal"
+        source: "/resources/infrastructure/choose-an-infra-provider"
+        destination: "/api-and-toolings/infrastructure/choose-an-infra-provider"
       - type: redirect
-        source: "/smart-accounts/eip-7702/quickstart"
-        destination: "/get-started/eip-7702/quickstart"
+        source: "/resources/infrastructure/zerodev"
+        destination: "/api-and-toolings/infrastructure/zerodev"
       - type: redirect
-        source: "/cross-chain/smart-routing-address"
-        destination: "/onramp/smart-routing-address"
+        source: "/resources/infrastructure/pimlico"
+        destination: "/api-and-toolings/infrastructure/pimlico"
       - type: redirect
-        source: "/cross-chain/chain-abstraction/overview"
-        destination: "/smart-accounts/chain-abstraction/overview"
+        source: "/resources/infrastructure/coinbase"
+        destination: "/api-and-toolings/infrastructure/coinbase"
       - type: redirect
-        source: "/cross-chain/chain-abstraction/supported-base-tokens"
-        destination: "/smart-accounts/chain-abstraction/supported-base-tokens"
+        source: "/resources/presets/intro"
+        destination: "/api-and-toolings/presets/intro"
       - type: redirect
-        source: "/cross-chain/chain-abstraction/supported-defi-tokens"
-        destination: "/smart-accounts/chain-abstraction/supported-defi-tokens"
-      - type: redirect
-        source: "/advanced/defi"
-        destination: "/smart-accounts/defi"
-      - type: redirect
-        source: "/advanced/multi-chain-signing"
-        destination: "/smart-accounts/multi-chain-signing"
-      - type: redirect
-        source: "/advanced/parallel-transactions"
-        destination: "/smart-accounts/parallel-transactions"
-      - type: redirect
-        source: "/advanced/deploy-contract"
-        destination: "/smart-accounts/deploy-contract"
-      - type: redirect
-        source: "/advanced/delegatecall"
-        destination: "/smart-accounts/delegatecall"
-      - type: redirect
-        source: "/resources/infrastructure/intro"
-        destination: "/api-and-toolings/infrastructure/intro"
-      - type: redirect
-        source: "/resources/infrastructure/gas-policies"
-        destination: "/api-and-toolings/infrastructure/gas-policies"
-      - type: redirect
-        source: "/resources/infrastructure/custom-gas-policies"
-        destination: "/api-and-toolings/infrastructure/custom-gas-policies"
+        source: "/resources/presets/zerodev"
+        destination: "/api-and-toolings/presets/zerodev"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

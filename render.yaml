@@ -69,54 +69,6 @@ services:
       - type: redirect
         source: "/resources/infrastructure/custom-gas-policies"
         destination: "/api-and-toolings/infrastructure/custom-gas-policies"
-      - type: redirect
-        source: "/resources/infrastructure/rpcs"
-        destination: "/api-and-toolings/infrastructure/rpcs"
-      - type: redirect
-        source: "/resources/infrastructure/api"
-        destination: "/api-and-toolings/infrastructure/api"
-      - type: redirect
-        source: "/resources/infrastructure/choose-an-infra-provider"
-        destination: "/api-and-toolings/infrastructure/choose-an-infra-provider"
-      - type: redirect
-        source: "/resources/infrastructure/zerodev"
-        destination: "/api-and-toolings/infrastructure/zerodev"
-      - type: redirect
-        source: "/resources/infrastructure/pimlico"
-        destination: "/api-and-toolings/infrastructure/pimlico"
-      - type: redirect
-        source: "/resources/infrastructure/coinbase"
-        destination: "/api-and-toolings/infrastructure/coinbase"
-      - type: redirect
-        source: "/resources/presets/intro"
-        destination: "/api-and-toolings/presets/intro"
-      - type: redirect
-        source: "/resources/presets/zerodev"
-        destination: "/api-and-toolings/presets/zerodev"
-      - type: redirect
-        source: "/resources/tools/status"
-        destination: "/api-and-toolings/tools/status"
-      - type: redirect
-        source: "/resources/tools/debugger"
-        destination: "/api-and-toolings/tools/debugger"
-      - type: redirect
-        source: "/resources/faqs/chains"
-        destination: "/api-and-toolings/faqs/chains"
-      - type: redirect
-        source: "/resources/faqs/audits"
-        destination: "/api-and-toolings/faqs/audits"
-      - type: redirect
-        source: "/resources/faqs/debug-userop"
-        destination: "/api-and-toolings/faqs/debug-userop"
-      - type: redirect
-        source: "/resources/faqs/use-with-ethers"
-        destination: "/api-and-toolings/faqs/use-with-ethers"
-      - type: redirect
-        source: "/resources/faqs/use-with-gelato"
-        destination: "/api-and-toolings/faqs/use-with-gelato"
-      - type: redirect
-        source: "/resources/faqs/use-with-react-native"
-        destination: "/api-and-toolings/faqs/use-with-react-native"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

@@ -33,18 +33,6 @@ services:
       - type: redirect
         source: "/resources/infrastructure/zerodev"
         destination: "/api-and-toolings/infrastructure/zerodev"
-      - type: redirect
-        source: "/resources/infrastructure/pimlico"
-        destination: "/api-and-toolings/infrastructure/pimlico"
-      - type: redirect
-        source: "/resources/infrastructure/coinbase"
-        destination: "/api-and-toolings/infrastructure/coinbase"
-      - type: redirect
-        source: "/resources/presets/intro"
-        destination: "/api-and-toolings/presets/intro"
-      - type: redirect
-        source: "/resources/presets/zerodev"
-        destination: "/api-and-toolings/presets/zerodev"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

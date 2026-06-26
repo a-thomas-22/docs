@@ -35,6 +35,9 @@ const END = "# <<< END GENERATED REDIRECTS";
 // emit all (the production setting). Committed so CI / re-runs reproduce the
 // same file. (Total routes = this many + the fixed hand-maintained tail.)
 const MAX = 137;
+// Take the LAST MAX redirects instead of the first — used to tell a pure count
+// cap apart from a single bad rule (same total, different rule subset).
+const FROM_END = true;
 
 const yaml = await readFile(renderPath, "utf8");
 const lines = yaml.split("\n");
@@ -58,7 +61,12 @@ if (beginIdx === -1 || endIdx === -1 || endIdx < beginIdx) {
 // against prettier 3.5.3–3.8.x. Don't switch this to flow style (`{ type: ...,
 // source: ... }`) — Prettier would reformat it and fight the sync check.
 const indent = lines[beginIdx].match(/^\s*/)[0];
-const selected = MAX == null ? redirects : redirects.slice(0, MAX);
+const selected =
+  MAX == null
+    ? redirects
+    : FROM_END
+      ? redirects.slice(-MAX)
+      : redirects.slice(0, MAX);
 const block = selected.flatMap(({ from, to }) => [
   `${indent}- type: redirect`,
   `${indent}  source: ${JSON.stringify(from)}`,

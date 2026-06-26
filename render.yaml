@@ -24,9 +24,6 @@ services:
       - type: redirect
         source: "/resources/infrastructure/rpcs"
         destination: "/api-and-toolings/infrastructure/rpcs"
-      - type: redirect
-        source: "/resources/infrastructure/api"
-        destination: "/api-and-toolings/infrastructure/api"
       # <<< END GENERATED REDIRECTS
       # ---- fixed hand-maintained tail: the legacy routes not in redirects.config.js ----
       # Keep BELOW the generated redirects (first match wins).

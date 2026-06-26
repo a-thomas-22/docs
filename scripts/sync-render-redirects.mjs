@@ -28,6 +28,14 @@ const renderPath = path.join(root, "render.yaml");
 const BEGIN = "# >>> BEGIN GENERATED REDIRECTS";
 const END = "# <<< END GENERATED REDIRECTS";
 
+// Route-cap bisection dial. Render's Blueprint sync fails on the "Update web
+// service routes" step above some per-service route count. MAX caps how many
+// redirects from redirects.config.js get written into the generated block;
+// raise it across syncs until one fails to find the ceiling. Set to null to
+// emit all (the production setting). Committed so CI / re-runs reproduce the
+// same file. (Total routes = this many + the fixed hand-maintained tail.)
+const MAX = 0;
+
 const yaml = await readFile(renderPath, "utf8");
 const lines = yaml.split("\n");
 
@@ -50,7 +58,8 @@ if (beginIdx === -1 || endIdx === -1 || endIdx < beginIdx) {
 // against prettier 3.5.3–3.8.x. Don't switch this to flow style (`{ type: ...,
 // source: ... }`) — Prettier would reformat it and fight the sync check.
 const indent = lines[beginIdx].match(/^\s*/)[0];
-const block = redirects.flatMap(({ from, to }) => [
+const selected = MAX == null ? redirects : redirects.slice(0, MAX);
+const block = selected.flatMap(({ from, to }) => [
   `${indent}- type: redirect`,
   `${indent}  source: ${JSON.stringify(from)}`,
   `${indent}  destination: ${JSON.stringify(to)}`,
@@ -64,5 +73,5 @@ const next = [
 
 await writeFile(renderPath, next.join("\n"));
 console.log(
-  `sync-render-redirects: wrote ${redirects.length} redirects into render.yaml.`,
+  `sync-render-redirects: wrote ${selected.length}/${redirects.length} redirects into render.yaml (MAX=${MAX}).`,
 );
